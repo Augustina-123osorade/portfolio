@@ -66,7 +66,7 @@ export default function Contact() {
       
       <div className="lg:w-1/2 bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-        <p className="text-gray-600 mb-8">We're here to answer your questions and help you connect with our community.</p>
+        <p className="text-gray-600 mb-8">We're here to answer your questions and also collaborate.</p>
         
         <div className="space-y-6">
           
