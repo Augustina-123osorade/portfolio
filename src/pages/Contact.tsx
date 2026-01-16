@@ -56,7 +56,7 @@ export default function Contact() {
   <div className="container mx-auto px-4">
     {/* Header */}
     <div className="text-center mb-12">
-      <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+      <h1 className="text-4xl font-bold mb-4">Let's talk</h1>
       <p className="text-gray-600">Have questions or want to get in touch? We'd love to hear from you!</p>
     </div>
 
