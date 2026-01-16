@@ -44,38 +44,45 @@ export default function Home() {
           Frontend-Focused
         </h1>
       </div>
-      <div className="bg-white rounded-[4rem] h-150 flex flex-col gap-5 items-center  overflow-hidden px-16  py-20 lg:flex-row lg:gap-20 lg:px-40 shadow-lg">
-        <div className="lg:w-1/2 flex flex-col items-center gap-6">
-            <h1 className="font-extrabold text-center text-4xl">Know more</h1>
-        <h1 className="font-bold text-center text-4xl text-violet-400">About me</h1>
-        <p>A frontend-focused developer with experience in modern web development using React and Next.js. Passionate about building responsive, high-performance applications that combine clean design with smooth functionality, and committed to creating user-centered, scalable solutions.</p>
-        <div className="flex items-center gap-10">
-                    <div className="">
-                      <a href="https://x.com/nosorade?s=11" target="blank">
-                        <FaXTwitter size={20} />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        href="https://www.linkedin.com/in/augustina-osorade?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                        target="blank"
-                      >
-                        <CiLinkedin size={25} />
-                      </a>
-                    </div>
-                    <div>
-                      <a href="https://github.com/Augustina-123osorade" target="blank">
-                        <FaGithub size={25} />
-                      </a>
-                    </div>
-                  </div>
+      <div className="bg-white rounded-3xl lg:rounded-[4rem] flex flex-col items-center gap-8 lg:gap-20 px-6 py-12 lg:px-40 lg:py-20 shadow-lg lg:flex-row">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start gap-6">
+          <div className="text-center lg:text-left">
+      <h1 className="font-extrabold text-3xl lg:text-4xl mb-2">Know more</h1>
+      <h1 className="font-bold text-3xl lg:text-4xl text-violet-400">About me</h1>
+    </div>
+          <p>
+            A frontend-focused developer with experience in modern web
+            development using React and Next.js. Passionate about building
+            responsive, high-performance applications that combine clean design
+            with smooth functionality, and committed to creating user-centered,
+            scalable solutions.
+          </p>
+          <div className="flex items-center gap-10">
+            <div className="">
+              <a href="https://x.com/nosorade?s=11" target="blank">
+                <FaXTwitter size={20} />
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://www.linkedin.com/in/augustina-osorade?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="blank"
+              >
+                <CiLinkedin size={25} />
+              </a>
+            </div>
+            <div>
+              <a href="https://github.com/Augustina-123osorade" target="blank">
+                <FaGithub size={25} />
+              </a>
+            </div>
+          </div>
         </div>
-        <div className=" h-120 w-120 rounded-2xl overflow-hidden border-4 border-white shadow-lg">
-            <img src={selfPic} alt="Self"  className="object-cover" />
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className=" w-64 h-64 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border-4 border-violet-100 shadow-lg">
+          <img src={selfPic} alt="Self" className="w-full h-full object-cover" />
         </div>
-        
-        
-
+        </div>
       </div>
       <div className="p-5 lg:p-20 flex flex-col  gap-6">
         <h1 className="font-extrabold text-5xl text-center text-violet-400">
@@ -162,7 +169,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Modal */}
+        
         <ProjectModal />
       </div>
     </div>
