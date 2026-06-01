@@ -14,7 +14,7 @@ import { projects } from "@/data/project-details";
 import { useAtom } from "jotai";
 import { projectModalOpenAtom, selectedProjectAtom } from "@/store/atom";
 import ProjectModal from "@/ui/ProjectModal";
-import selfPic from "../assets/images/august.jpg";
+import selfPic from "../assets/images/teeImage.jpeg";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiLinkedin } from "react-icons/ci";
 export default function Home() {
