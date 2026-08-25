@@ -41,144 +41,171 @@ export default function Contact() {
         message: "",
       });
       setSubmitStatus("success");
-    } catch (error: any) {
+    } catch (error: unknown) {
       const errorMessage =
-        error.message ||
-        "An error occurred while submitting the form. Please try again later.";
+        error instanceof Error
+          ? error.message
+          : "An error occurred while submitting the form. Please try again later.";
       alert(errorMessage);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const inputClasses =
+    "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-400 shadow-sm transition focus:border-[#D9713F] focus:outline-none focus:ring-2 focus:ring-[#F2AF8E]/40";
+
   return (
-    <div className="bg-radial-[at_50%_65%] from-sky-50 via-blue-50 to-violet-50 to-90% min-h-screen py-10 lg:py-20">
-  <div className="container mx-auto px-4">
-    {/* Header */}
-    <div className="text-center mb-12">
-      <h1 className="text-4xl font-bold mb-4">Let's talk</h1>
-      <p className="text-gray-600">Have questions or want to get in touch? We'd love to hear from you!</p>
-    </div>
+    <div className="min-h-screen bg-[#FAF6F0] px-6 py-20 lg:px-16 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="text-center">
+          <span className="text-sm font-semibold uppercase tracking-widest text-[#C4633C]">
+            Contact
+          </span>
+          <h1 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">Let's Talk</h1>
+          <p className="mx-auto mt-3 max-w-xl text-gray-600">
+            Have a project in mind or just want to say hi? I'd love to hear
+            from you.
+          </p>
+        </div>
 
-    
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-      
-      
-      <div className="lg:w-1/2 bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-        <p className="text-gray-600 mb-8">We're here to answer your questions and also collaborate.</p>
-        
-        <div className="space-y-6">
-          
-          <div className="flex items-start gap-4">
-            <SiGmail className="text-violet-600 text-xl mt-1" />
-            <div>
-              <p className="font-semibold mb-1">Email</p>
-              <p className="text-gray-600">ewuramaosorade@gmail.com</p>
-            </div>
-          </div>
+        <div className="mt-16 flex flex-col gap-8 lg:flex-row lg:gap-12">
+          <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm lg:w-1/2">
+            <h2 className="text-2xl font-bold text-gray-900">Get in Touch</h2>
+            <p className="mt-2 text-gray-600">
+              I'm here to answer your questions and also collaborate.
+            </p>
 
-          
-          <div className="flex items-start gap-4">
-            <CiLocationOn className="text-violet-600 text-xl mt-1" />
-            <div>
-              <p className="font-semibold mb-1">Location</p>
-              <p className="text-gray-600">Accra, Ghana</p>
-            </div>
-          </div>
+            <div className="mt-8 space-y-6">
+              <div className="flex items-start gap-4">
+                <SiGmail className="mt-1 text-xl text-[#D9713F]" />
+                <div>
+                  <p className="mb-1 font-semibold text-gray-900">Email</p>
+                  <p className="text-gray-600">ewuramaosorade@gmail.com</p>
+                </div>
+              </div>
 
-          
-          <div className="flex items-start gap-4">
-            <FiMessageCircle className="text-violet-600 text-xl mt-1" />
-            <div>
-              <p className="font-semibold mb-2">Social Media</p>
-              <div className="flex items-center gap-4">
-                <a href="https://x.com/nosorade?s=11" target="_blank" className="text-gray-600 hover:text-violet-600 transition-colors">
-                  <FaXTwitter size={20} />
-                </a>
-                <a href="https://www.linkedin.com/in/augustina-osorade?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" className="text-gray-600 hover:text-violet-600 transition-colors">
-                  <CiLinkedin size={25} />
-                </a>
-                <a href="https://github.com/Augustina-123osorade" target="_blank" className="text-gray-600 hover:text-violet-600 transition-colors">
-                  <FaGithub size={25} />
-                </a>
+              <div className="flex items-start gap-4">
+                <CiLocationOn className="mt-1 text-xl text-[#D9713F]" />
+                <div>
+                  <p className="mb-1 font-semibold text-gray-900">Location</p>
+                  <p className="text-gray-600">Accra, Ghana</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <FiMessageCircle className="mt-1 text-xl text-[#D9713F]" />
+                <div>
+                  <p className="mb-2 font-semibold text-gray-900">Social Media</p>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://x.com/nosorade?s=11"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-gray-500 transition-colors hover:text-[#D9713F]"
+                    >
+                      <FaXTwitter size={20} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/augustina-osorade"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-gray-500 transition-colors hover:text-[#D9713F]"
+                    >
+                      <CiLinkedin size={25} />
+                    </a>
+                    <a
+                      href="https://github.com/Augustina-123osorade"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-gray-500 transition-colors hover:text-[#D9713F]"
+                    >
+                      <FaGithub size={25} />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm lg:w-1/2">
+            <h2 className="text-2xl font-bold text-gray-900">Send a Message</h2>
+            <p className="mt-2 text-gray-600">
+              Fill out the form below and I'll get back to you as soon as possible.
+            </p>
+
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+              <div>
+                <label htmlFor="name" className="mb-2 block text-sm font-semibold text-gray-800">
+                  Your Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your name"
+                  className={inputClasses}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-800">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="youremail@example.com"
+                  className={inputClasses}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="mb-2 block text-sm font-semibold text-gray-800">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  placeholder="Leave your message here..."
+                  className={`${inputClasses} resize-none`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full rounded-full bg-gray-900 px-6 py-3.5 font-semibold text-white transition hover:bg-gray-800 disabled:opacity-50"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+
+              {submitStatus === "success" && (
+                <div className="rounded-xl bg-emerald-50 p-4 text-emerald-700">
+                  <p>Message sent successfully! I'll get back to you soon.</p>
+                </div>
+              )}
+              {submitStatus === "error" && (
+                <div className="rounded-xl bg-red-50 p-4 text-red-700">
+                  <p>There was an error sending your message. Please try again.</p>
+                </div>
+              )}
+            </form>
+          </div>
         </div>
       </div>
-
-      {/* Right Side - Contact Form */}
-      <div className="lg:w-1/2 bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
-        <p className="text-gray-600 mb-6">Fill out the form below and we'll get back to you as soon as possible.</p>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label htmlFor="name" className="block text-sm font-semibold mb-2">Your Name *</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-violet-600"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-semibold mb-2">Email Address *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="youremail@example.com"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-violet-600"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message" className="block text-sm font-semibold mb-2">Message *</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={6}
-              placeholder="Leave your message here..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-violet-600 resize-none"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors disabled:opacity-50 font-medium"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-
-          {submitStatus === "success" && (
-            <div className="p-4 bg-green-100 text-green-800 rounded-lg">
-              <p>Message sent successfully! I'll get back to you soon.</p>
-            </div>
-          )}
-          {submitStatus === "error" && (
-            <div className="p-4 bg-red-100 text-red-800 rounded-lg">
-              <p>There was an error sending your message. Please try again.</p>
-            </div>
-          )}
-        </form>
-      </div>
-
     </div>
-  </div>
-</div>
   );
 }

@@ -1,13 +1,10 @@
 import { createRootRoute, Outlet, Link } from "@tanstack/react-router";
 
-import { FaXTwitter, FaGithub } from "react-icons/fa6";
-import { CiLinkedin } from "react-icons/ci";
-import { SiGmail } from "react-icons/si";
-import { CiLocationOn } from "react-icons/ci";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import { sidebarOpenAtom } from "@/store/atom";
 import { useAtom } from "jotai";
+import Footer from "@/ui/Footer";
 
 
 export const Route = createRootRoute({
@@ -21,25 +18,34 @@ function RootComponent() {
   
   return (
     <div className="">
-      <nav className="relative flex items-center px-10 py-5 h-20 bg-violet-100  shadow-md opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
-        <div>
-          <h2 className="bg-linear-to-r from-blue-400 to-violet-300 bg-clip-text text-2xl font-bold text-transparent">
-            AugOs Space
-          </h2>
+      <nav className="relative flex items-center justify-between px-6 py-6 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards] md:px-16 lg:px-24">
+        <Link to="/" className="flex items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-900 text-sm font-bold text-white">
+            AO
+          </span>
+          <span className="text-sm font-semibold tracking-tight text-gray-900">
+            Augustina Osorade
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-10 text-sm font-medium text-gray-600 md:flex">
+          <Link to="/" className="transition hover:text-gray-900">
+            Home
+          </Link>
+          <Link to="/projects" className="transition hover:text-gray-900">
+            Work
+          </Link>
+          <Link to="/contact" className="transition hover:text-gray-900">
+            Contact
+          </Link>
         </div>
-        <div className="hidden md:flex space-x-6 ml-20 absolute left-1/2 -translate-x-1/2">
-          <Link to="/">Home</Link>
-          
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-        </div>
-        
+
         <div className="md:hidden">
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className=" hover:bg-accent rounded-md absolute right-10 top-5 p-2"
+            className="rounded-md p-2 text-gray-700 hover:bg-gray-900/5"
           >
-            <CiMenuBurger size={30} />
+            <CiMenuBurger size={26} />
           </button>
         </div>
       </nav>
@@ -94,49 +100,7 @@ function RootComponent() {
       </div>
 
       <Outlet />
-      <footer>
-        <div className="flex flex-col items-center gap-5 p-10  ">
-          <p className="text-center text-xl font-bold">Reach Out</p>
-          <div className="flex items-center gap-10">
-            <div className="">
-              <a href="https://x.com/nosorade?s=11" target="blank">
-                <FaXTwitter size={20} />
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://www.linkedin.com/in/augustina-osorade?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                target="blank"
-              >
-                <CiLinkedin size={25} />
-              </a>
-            </div>
-            <div>
-              <a href="https://github.com/Augustina-123osorade" target="blank">
-                <FaGithub size={25} />
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="font-bold text-xl">Contact</p>
-            <div className="flex items-center gap-2">
-              <SiGmail className="text-gray-400" />
-              <a href="mailto:ewuramaosorade@gmail.com ">
-                ewuramaosorade@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <CiLocationOn />
-              <p>Accra, Ghana</p>
-            </div>
-          </div>
-        </div>
-        <div className="border-t py-6 border-gray-300">
-          <p className="text-center">
-            © {new Date().getFullYear()} Augustina Osorade. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

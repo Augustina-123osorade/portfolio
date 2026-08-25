@@ -1,51 +1,68 @@
-import { projects } from "@/data/project-details"
-import { projectModalOpenAtom, selectedProjectAtom } from "@/store/atom"
-import { useAtom } from "jotai"
-import ProjectModal from "@/ui/ProjectModal"
+import { useAtom } from "jotai";
+import { projects, type ProjectDetails } from "@/data/project-details";
+import { currentProjects } from "@/data/current-projects";
+import { projectModalOpenAtom, selectedProjectAtom } from "@/store/atom";
+import ProjectModal from "@/ui/ProjectModal";
+import ProjectRow from "@/ui/ProjectRow";
+import CurrentProjectRow from "@/ui/CurrentProjectRow";
 
-export default function Projects(){
-    const [, setIsModalOpen]=useAtom(projectModalOpenAtom)
-    const[, setSelectedProject]=useAtom(selectedProjectAtom)
+export default function Projects() {
+  const [, setIsModalOpen] = useAtom(projectModalOpenAtom);
+  const [, setSelectedProject] = useAtom(selectedProjectAtom);
 
-    const handleProjectClick=(project:any)=>{
-        setSelectedProject(project)
-        setIsModalOpen(true)
-    }
-    return(
-        <div className="bg-radial-[at_50%_65%] from-sky-50 via-blue-50 to-violet-50 to-90% flex flex-col   p-10   gap-10 lg:p-40">
-            <h1 className="text-4xl font-bold mb-8 text-center text-violet-400">Projects</h1>
-            <p className="text-center">Here are some of the projects I’ve built, focusing on responsive design, performance, and clean user experiences.</p>
-      
-      
-      <div className="flex flex-col gap-20 ">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            
-            className=" border-white border rounded p-10 flex flex-col gap-5  bg-white shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out "
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className=" "
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <button
-                onClick={() => handleProjectClick(project)}
-                className=" w-full bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors disabled:opacity-50 font-medium"
-              >
-                More Details
-              </button>
-              
-            </div>
-          </div>
-        ))}
+  const handleProjectClick = (project: ProjectDetails) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  return (
+    <div className="flex flex-col gap-20 bg-[#FAF6F0] px-6 py-20 lg:px-16 lg:py-28">
+      <div className="mx-auto w-full max-w-6xl text-center">
+        <span className="text-sm font-semibold uppercase tracking-widest text-[#C4633C]">
+          Portfolio
+        </span>
+        <h1 className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">My Work</h1>
+        <p className="mx-auto mt-3 max-w-xl text-gray-600">
+          Here's some of the work I've built, focusing on responsive design,
+          performance, and clean user experiences — for businesses and for
+          causes that matter.
+        </p>
       </div>
 
-      
-      <ProjectModal />
-
+      <section className="mx-auto w-full max-w-6xl">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-8 bg-[#C4633C]" />
+          <h2 className="text-2xl font-extrabold text-gray-900">Current Projects</h2>
         </div>
-    )
+        <p className="mt-2 text-sm text-gray-600">Actively being built or recently shipped.</p>
+
+        <div className="mt-16 flex flex-col gap-20">
+          {currentProjects.map((project, index) => (
+            <CurrentProjectRow key={project.id} project={project} reverse={index % 2 === 1} />
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-8 bg-[#C4633C]" />
+          <h2 className="text-2xl font-extrabold text-gray-900">Past Projects</h2>
+        </div>
+        <p className="mt-2 text-sm text-gray-600">Completed builds from earlier work.</p>
+
+        <div className="mt-16 flex flex-col gap-20">
+          {projects.map((project, index) => (
+            <ProjectRow
+              key={project.id}
+              project={project}
+              onDetailsClick={handleProjectClick}
+              reverse={index % 2 === 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      <ProjectModal />
+    </div>
+  );
 }
